@@ -1,0 +1,65 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <bean name="student" class="com.satwik.spring.setterInjection.Student">
+
+        <property name="id">
+            <value>50</value>  <!-- value as element in property tag -->
+        </property>
+
+        <property name="name" value="Satwik"/> <!-- value as attribute inside property tag -->
+        <property name="age" value="24"/>
+        <property name="gender" value="Male"/>
+        <property name="courses"> <!-- Collection types list initialization -->
+            <list>
+                <value>Maths</value>
+                <value>Physics</value>
+                <value>Chemistry</value>
+                <value>Languages</value>
+            </list>
+        </property>
+        <property name="hobbies"> <!-- Collection types set initialization -->
+            <set>
+                <value>Games</value>
+                <value>Games</value>
+                <value>Movies</value>
+                <value>Anime</value>
+                <value>Tv-Series</value>
+            </set>
+        </property>
+        <property name="grades"> <!-- Collection types map initialization -->
+            <map>
+                <entry key="Maths" value="89"/>
+                <entry key="Physics" value="85"/>
+                <entry key="Chemistry" value="90"/>
+                <entry key="Languages" value="79"/>
+            </map>
+        </property>
+        <property name="active" value="true"/>
+
+        <property name="address"> <!-- Reference types ref tag as element-->
+            <ref bean="address"/>
+        </property>
+
+        <!-- ref tag as attribute in property tag
+        <property name="address" ref="address"/>
+        -->
+
+        <!-- ref tag as attribute in p schema p:property name-ref = "bean name of reference bean"
+         <bean name="student" class="com.satwik.spring.setterInjection.Student" p:address-ref="address">
+        -->
+
+    </bean>
+
+    <bean name="address" class="com.satwik.spring.setterInjection.Address" p:street="Moghalrajpuram" p:city="Vijayawada" p:zipCode="520010"/> <!-- This is P-schema we can give property name after p: and equal to value inside " " -->
+
+
+</beans>

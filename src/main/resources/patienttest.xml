@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean name="test" class="com.satwik.spring.constructorinjection.Test" p:rbcCount="1520" p:wbcCount="520" p:plateletsCount="68502" />
+
+    <bean name="patient" class="com.satwik.spring.constructorinjection.Patient" c:id="123" c:name="alien2" c:tests-ref="test" /> <!-- c schema -->
+                   <!-- or below-->
+    <!-- <bean name="patient" class="com.satwik.spring.constructorinjection.Patient">
+
+        <constructor-arg>  Value as element
+            <value>232</value>
+        </constructor-arg>
+
+        <constructor-arg value="Alien" />  value as attribute
+
+        <constructor-arg> ref tag inside tag as element
+            <ref bean="test"/>
+        </constructor-arg>
+                or below
+        <constructor-arg ref="test"/> ref tag as attribute
+
+    </bean> -->
+
+
+</beans>
