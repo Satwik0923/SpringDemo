@@ -1,0 +1,39 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean name="add" class="com.satwik.spring.constructorinjection.ambiguity.Addition">
+
+        <!-- ambiguity problems can be fixed by using combination of three attributes : type, index and name
+        Below are few examples for the same -->
+
+        <!-- By default, if you don't use any attributes string constructor is invoked -->
+        <!-- <constructor-arg value="4"/> -->
+        <!-- <constructor-arg value="10"/> -->
+
+        <!-- Using type attributes -->
+        <!-- <constructor-arg value="4" type="int"/> -->
+        <!-- <constructor-arg value="10" type="int"/> -->
+
+        <!-- invoking int double constructor without using index attribute
+        Even though the order is different the values will be assigned to parameters according to type provided-->
+        <!-- <constructor-arg value="4.0" type="double"/> -->
+        <!-- <constructor-arg value="10" type="int"/> -->
+
+        <!-- If we want the values to be inserted in order we can use index attribute -->
+        <!-- <constructor-arg value="4.0" type="double" index="1"/> -->
+        <!-- <constructor-arg value="10" type="int" index="0"/> -->
+
+        <!-- using names of arguments to invoke constructor -->
+        <constructor-arg value="4.0" name="y" />
+        <constructor-arg value="10" name="x" />
+
+
+    </bean>
+
+</beans>
